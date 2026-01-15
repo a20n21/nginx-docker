@@ -25,7 +25,7 @@ pipeline {
       steps {
         sh '''
         docker run -d --name nginx-prod \
-          -p 8080:80 \
+          -p 8081:80 \
           nginx-vscode:latest
         '''
       }
