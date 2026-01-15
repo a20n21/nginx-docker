@@ -17,15 +17,20 @@ pipeline {
 
     stage('Parar container antigo') {
       steps {
-        sh 'docker rm -f nginx-prod || true'
+        sh '''
+        docker stop nginx-prod || true
+        docker rm nginx-prod || true
+        '''
       }
     }
 
     stage('Subir novo container') {
       steps {
         sh '''
-        docker run -d --name nginx-prod \
+        docker run -d \
+          --name nginx-prod \
           -p 8081:80 \
+          --restart always \
           nginx-vscode:latest
         '''
       }
