@@ -1,36 +1,24 @@
 pipeline {
-  agent any
+    agent any
 
-  stages {
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
 
-    stage('Checkout') {
-      steps {
-        checkout scm
-      }
+        stage('Build da imagem') {
+            steps {
+                sh 'docker rm -f nginx-prod || true'
+                sh 'docker build -t nginx-prod:latest .'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                sh 'docker run -d --name nginx-prod -p 8081:80 --restart always nginx-prod:latest'
+            }
+        }
     }
-
-    stage('Build da imagem') {
-      steps {
-        sh 'docker build -t nginx-vscode:latest .'
-      }
-    }
-
-    stage('Testes') {
-      steps {
-        sh 'docker run --rm nginx-vscode:latest nginx -t'
-      }
-    }
-
-    stage('Deploy Produção') {
-      when {
-        branch 'main'
-      }
-      steps {
-        sh 'docker rm -f nginx-prod || true'
-        sh 'docker run -d --name nginx-prod -p 8081:80 --restart always nginx-vscode:latest'
-      }
-    }
-  }
 }
-
-
