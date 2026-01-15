@@ -1,10 +1,84 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
-    <title>Aplicação Pipeline Matias</title>
+  <meta charset="UTF-8">
+  <title>API Anderson | Ambiente de Produção</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(120deg,#0f172a,#020617);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .card {
+      background: #020617;
+      border-radius: 16px;
+      padding: 50px;
+      box-shadow: 0 0 60px rgba(56,189,248,.3);
+      max-width: 480px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+      color: #38bdf8;
+    }
+
+    .badge {
+      background: #22c55e;
+      color: #020617;
+      padding: 6px 14px;
+      border-radius: 999px;
+      display: inline-block;
+      margin-bottom: 25px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    p {
+      opacity: .85;
+      line-height: 1.6;
+    }
+
+    .version {
+      margin-top: 25px;
+      font-size: 13px;
+      opacity: .6;
+    }
+
+    .footer {
+      margin-top: 30px;
+      font-size: 12px;
+      opacity: .4;
+    }
+  </style>
 </head>
 <body>
-    <h1>Pipeline Funcionando </h1>
-    <p>Imagem criada por Matias</p>
+
+<div class="card">
+  <span class="badge">PRODUÇÃO</span>
+  <h1>API Anderson</h1>
+  <p>Infraestrutura entregue via Jenkins + Docker + GitHub</p>
+  <p>Ambiente totalmente automatizado com CI/CD real.</p>
+
+  <div class="version">
+    Build version: <strong>v1.0.0</strong><br>
+    Pipeline: Jenkins Multibranch
+  </div>
+
+  <div class="footer">
+    © 2026 • DevOps Lab
+  </div>
+</div>
+
 </body>
 </html>
+
