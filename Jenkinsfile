@@ -1,11 +1,17 @@
 pipeline {
   agent any
 
-  stages {
+  environment {
+    GITHUB_TOKEN = credentials('git') 
+  }
 
+  stages {
     stage('Baixar código') {
       steps {
-        git branch: 'main', url: 'https://github.com/a20n21/nginx-docker.git'
+        git(
+          branch: 'main',
+          url: "https://${GITHUB_TOKEN}@github.com/a20n21/nginx-docker.git"
+        )
       }
     }
 
@@ -17,18 +23,14 @@ pipeline {
 
     stage('Parar container antigo') {
       steps {
-        sh '''
-        docker stop nginx-prod || true
-        docker rm nginx-prod || true
-        '''
+        sh 'docker rm -f nginx-prod || true'
       }
     }
 
     stage('Subir novo container') {
       steps {
         sh '''
-        docker run -d \
-          --name nginx-prod \
+        docker run -d --name nginx-prod \
           -p 8081:80 \
           --restart always \
           nginx-vscode:latest
@@ -37,3 +39,4 @@ pipeline {
     }
   }
 }
+
