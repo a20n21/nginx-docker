@@ -9,10 +9,10 @@ clients:
   - url: http://192.168.100.237:3100/loki/api/v1/push
 
 scrape_configs:
-  - job_name: docker
+  - job_name: nginx-prod
     static_configs:
       - targets:
           - localhost
         labels:
-          job: docker
+          job: nginx
           __path__: /var/lib/docker/containers/*/*.log
