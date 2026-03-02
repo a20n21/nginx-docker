@@ -4,9 +4,12 @@ pipeline {
     environment {
         DOCKER_IMAGE = "matias1210/nginx-prod"
         TAG = "${BUILD_NUMBER}"
+        KUBE_DEPLOYMENT = "nginx-prod"
+        KUBE_NAMESPACE = "default"
     }
 
     stages {
+
         stage('Checkout') {
             steps {
                 checkout scm
@@ -35,6 +38,18 @@ pipeline {
                 sh """
                 docker push $DOCKER_IMAGE:$TAG
                 docker push $DOCKER_IMAGE:latest
+                """
+            }
+        }
+
+        stage('Deploy to Kubernetes') {
+            steps {
+                sh """
+                kubectl set image deployment/$KUBE_DEPLOYMENT \
+                nginx=$DOCKER_IMAGE:$TAG \
+                -n $KUBE_NAMESPACE
+
+                kubectl rollout status deployment/$KUBE_DEPLOYMENT -n $KUBE_NAMESPACE
                 """
             }
         }
