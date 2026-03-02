@@ -44,22 +44,40 @@ pipeline {
 
         stage('Deploy to Kubernetes') {
             steps {
+                // Aqui usamos o secret do kubeconfig
                 withCredentials([string(credentialsId: 'kubeconfig-secret', variable: 'KUBECONFIG_CONTENT')]) {
                     sh '''
+                        # Cria arquivo temporário kubeconfig
                         echo "$KUBECONFIG_CONTENT" > kubeconfig_temp
                         export KUBECONFIG=$(pwd)/kubeconfig_temp
 
-                        # Atualiza a imagem do deployment
-                        kubectl set image deployment/$KUBE_DEPLOYMENT nginx=$DOCKER_IMAGE:$TAG -n $KUBE_NAMESPACE
-
-                        # Aguarda rollout finalizar
-                        kubectl rollout status deployment/$KUBE_DEPLOYMENT -n $KUBE_NAMESPACE
-
-                        # Apenas para debug: listar nodes
+                        # Testa conexão
+                        echo "Nodes do cluster:"
                         kubectl get nodes
+
+                        # Atualiza a imagem do deployment
+                        kubectl set image deployment/$KUBE_DEPLOYMENT \
+                        nginx=$DOCKER_IMAGE:$TAG \
+                        -n $KUBE_NAMESPACE
+
+                        # Acompanha rollout
+                        kubectl rollout status deployment/$KUBE_DEPLOYMENT -n $KUBE_NAMESPACE
                     '''
                 }
             }
+        }
+    }
+
+    post {
+        always {
+            // Limpeza
+            sh 'rm -f kubeconfig_temp'
+        }
+        success {
+            echo "Pipeline finalizado com sucesso! 🚀"
+        }
+        failure {
+            echo "Pipeline falhou 😢"
         }
     }
 }
