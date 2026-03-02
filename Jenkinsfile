@@ -44,13 +44,21 @@ pipeline {
 
         stage('Deploy to Kubernetes') {
             steps {
-                sh """
-                kubectl set image deployment/$KUBE_DEPLOYMENT \
-                nginx=$DOCKER_IMAGE:$TAG \
-                -n $KUBE_NAMESPACE
+                withCredentials([string(credentialsId: 'kubeconfig-secret', variable: 'KUBECONFIG_CONTENT')]) {
+                    sh '''
+                        echo "$KUBECONFIG_CONTENT" > kubeconfig_temp
+                        export KUBECONFIG=$(pwd)/kubeconfig_temp
 
-                kubectl rollout status deployment/$KUBE_DEPLOYMENT -n $KUBE_NAMESPACE
-                """
+                        # Atualiza a imagem do deployment
+                        kubectl set image deployment/$KUBE_DEPLOYMENT nginx=$DOCKER_IMAGE:$TAG -n $KUBE_NAMESPACE
+
+                        # Aguarda rollout finalizar
+                        kubectl rollout status deployment/$KUBE_DEPLOYMENT -n $KUBE_NAMESPACE
+
+                        # Apenas para debug: listar nodes
+                        kubectl get nodes
+                    '''
+                }
             }
         }
     }
