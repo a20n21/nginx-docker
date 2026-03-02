@@ -1,84 +1,105 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>API Anderson | Ambiente de Produção</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(120deg,#0f172a,#020617);
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
+    <meta charset="UTF-8">
+    <title>Projeto DevOps - Nginx</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    .card {
-      background: #020617;
-      border-radius: 16px;
-      padding: 50px;
-      box-shadow: 0 0 60px rgba(56,189,248,.3);
-      max-width: 480px;
-      text-align: center;
-    }
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-    h1 {
-      font-size: 32px;
-      margin-bottom: 10px;
-      color: #38bdf8;
-    }
+        body {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
 
-    .badge {
-      background: #22c55e;
-      color: #020617;
-      padding: 6px 14px;
-      border-radius: 999px;
-      display: inline-block;
-      margin-bottom: 25px;
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
+        .container {
+            max-width: 800px;
+            padding: 40px;
+        }
 
-    p {
-      opacity: .85;
-      line-height: 1.6;
-    }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
 
-    .version {
-      margin-top: 25px;
-      font-size: 13px;
-      opacity: .6;
-    }
+        h1 span {
+            color: #00ffcc;
+        }
 
-    .footer {
-      margin-top: 30px;
-      font-size: 12px;
-      opacity: .4;
-    }
-  </style>
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .info {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            margin-bottom: 20px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 50px;
+            background: #00ffcc;
+            color: #000;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        footer {
+            margin-top: 40px;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        @media(max-width: 600px){
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
+
 <body>
+    <div class="container">
+        <h1>🚀 Projeto <span>DevOps</span></h1>
 
-<div class="card">
-  <span class="badge">PRODUÇÃO</span>
-  <h1>API Anderson</h1>
-  <p>Infraestrutura entregue via Jenkins + Docker + GitHub</p>
-  <p>Ambiente totalmente automatizado com CI/CD real.</p>
+        <p>
+            Aplicação rodando em container Docker com NGINX,
+            pipeline automatizado no Jenkins
+            e preparada para Kubernetes.
+        </p>
 
-  <div class="version">
-    Build version: <strong>v1.0.0</strong><br>
-    Pipeline: Jenkins Multibranch
-  </div>
+        <div class="info">
+            <h3>🔧 Stack do Projeto</h3>
+            <p>✔ Docker</p>
+            <p>✔ Jenkins CI</p>
+            <p>✔ Kubernetes</p>
+            <p>✔ GitHub</p>
+        </div>
 
-  <div class="footer">
-    © 2026 • DevOps Lab
-  </div>
-</div>
+        <div class="badge">
+            Deploy Automático Ativo ✅
+        </div>
 
+        <footer>
+            Criado por Anderson Matias | 2026
+        </footer>
+    </div>
 </body>
 </html>
-
