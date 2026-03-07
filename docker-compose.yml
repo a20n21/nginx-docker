@@ -9,6 +9,7 @@ services:
       - "8081:80"
     volumes:
        - ./logs/nginx:/var/log/nginx
+       - ./site:/usr/share/nginx/html
     restart: unless-stopped
 
   nginx-exporter:
