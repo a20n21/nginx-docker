@@ -1,216 +1,193 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DevOps Monitoring Platform</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ana.logialiteraria</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-<style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #fff0f5;
+      color: #4a4a4a;
+    }
 
-body{
-margin:0;
-font-family:Arial, Helvetica, sans-serif;
-background:linear-gradient(135deg,#1e3c72,#2a5298);
-color:white;
-}
+    header {
+      background: #ffc0cb;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
 
-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px 60px;
-background:rgba(0,0,0,0.2);
-backdrop-filter: blur(10px);
-}
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      color: #6b2c3e;
+      font-size: 26px;
+    }
 
-.logo{
-font-size:22px;
-font-weight:bold;
-}
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #6b2c3e;
+      font-weight: 500;
+    }
 
-nav a{
-margin-left:25px;
-text-decoration:none;
-color:white;
-font-weight:bold;
-transition:0.3s;
-}
+    .hero {
+      height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(rgba(255,192,203,0.6), rgba(255,240,245,0.9)), url('https://images.unsplash.com/photo-1519681393784-d120267933ba') center/cover;
+      color: #6b2c3e;
+    }
 
-nav a:hover{
-color:#00e5ff;
-}
+    .hero h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 38px;
+    }
 
-.hero{
-text-align:center;
-padding:120px 20px;
-}
+    section { padding: 60px 40px; text-align: center; }
 
-.hero h1{
-font-size:48px;
-margin-bottom:20px;
-}
+    h2 {
+      font-family: 'Playfair Display', serif;
+      color: #6b2c3e;
+      margin-bottom: 20px;
+    }
 
-.hero p{
-font-size:20px;
-opacity:0.9;
-}
+    .books {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
+    }
 
-.buttons{
-margin-top:30px;
-}
+    .book {
+      background: white;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
 
-.btn{
-padding:15px 30px;
-border:none;
-border-radius:8px;
-font-size:16px;
-cursor:pointer;
-margin:10px;
-transition:0.3s;
-}
+    .book img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 15px;
+      margin-bottom: 15px;
+    }
 
-.btn-primary{
-background:#00e5ff;
-color:black;
-}
+    .rating { color: #ff69b4; }
 
-.btn-primary:hover{
-background:#00bcd4;
-}
+    .blog {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
 
-.btn-secondary{
-background:transparent;
-border:2px solid white;
-color:white;
-}
+    .post {
+      background: white;
+      padding: 25px;
+      border-radius: 20px;
+      text-align: left;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
 
-.btn-secondary:hover{
-background:white;
-color:black;
-}
+    .post h3 { margin-bottom: 10px; color: #6b2c3e; }
 
-.section{
-padding:80px 40px;
-text-align:center;
-}
+    .post small { color: #999; }
 
-.cards{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:30px;
-margin-top:40px;
-}
-
-.card{
-background:rgba(255,255,255,0.1);
-padding:30px;
-border-radius:15px;
-width:260px;
-transition:0.3s;
-cursor:pointer;
-}
-
-.card:hover{
-transform:translateY(-10px);
-background:rgba(255,255,255,0.2);
-}
-
-.card h3{
-margin-bottom:15px;
-}
-
-footer{
-text-align:center;
-padding:30px;
-background:rgba(0,0,0,0.2);
-margin-top:60px;
-}
-
-</style>
+    footer {
+      background: #ffc0cb;
+      color: #6b2c3e;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+  </style>
 </head>
-
 <body>
 
 <header>
-
-<div class="logo">🚀 DevOps Platform</div>
-
-<nav>
-<a href="#">Home</a>
-<a href="#">Monitoramento</a>
-<a href="#">Logs</a>
-<a href="#">Infraestrutura</a>
-<a href="#">Contato</a>
-</nav>
-
+  <h1>🌸 ana.logialiteraria</h1>
+  <nav>
+    <a href="#home">Início</a>
+    <a href="#livros">Livros</a>
+    <a href="#blog">Blog</a>
+  </nav>
 </header>
 
-<section class="hero">
-
-<h1>Monitoramento e Observabilidade</h1>
-
-<p>Ambiente de monitoramento moderno utilizando Prometheus, Grafana e Loki.</p>
-
-<div class="buttons">
-
-<button class="btn btn-primary" onclick="alert('Bem-vindo ao ambiente DevOps 🚀')">
-Entrar no Sistema
-</button>
-
-<button class="btn btn-secondary" onclick="scrollToSection()">
-Explorar
-</button>
-
-</div>
-
+<section class="hero" id="home">
+  <div>
+    <h2>Meu mundo entre páginas 💕</h2>
+    <p>Leituras, sentimentos e reflexões</p>
+  </div>
 </section>
 
-<section class="section" id="features">
+<section id="livros">
+  <h2>Livros que li 💖</h2>
+  <div class="books">
 
-<h2>Principais Recursos</h2>
+    <div class="book">
+      <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f">
+      <h3>A hipótese do amor</h3>
+      <p><strong>Autor:</strong> Ali Hazelwood</p>
+      <div class="rating">★★★★★</div>
+      <p>Romance leve, divertido e muito envolvente. Me conquistou do começo ao fim!</p>
+    </div>
 
-<div class="cards">
+    <div class="book">
+      <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794">
+      <h3>As coisas que nunca superamos</h3>
+      <p><strong>Autor:</strong> Lucy Score</p>
+      <div class="rating">★★★★☆</div>
+      <p>Uma história emocionante com personagens fortes e marcantes.</p>
+    </div>
 
-<div class="card">
-<h3>📊 Monitoramento</h3>
-<p>Métricas em tempo real utilizando Prometheus e dashboards no Grafana.</p>
-</div>
+    <div class="book">
+      <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f">
+      <h3>O lado feio do amor</h3>
+      <p><strong>Autor:</strong> Colleen Hoover</p>
+      <div class="rating">★★★★★</div>
+      <p>Intenso, doloroso e muito real. Um livro que mexe com o coração.</p>
+    </div>
 
-<div class="card">
-<h3>📜 Logs</h3>
-<p>Centralização de logs com Loki e análise eficiente de eventos.</p>
-</div>
+  </div>
+</section>
 
-<div class="card">
-<h3>⚙️ Automação</h3>
-<p>Infraestrutura automatizada com Docker e pipelines CI/CD.</p>
-</div>
+<section id="blog">
+  <h2>Blog ✨</h2>
+  <div class="blog">
 
-<div class="card">
-<h3>🔒 Segurança</h3>
-<p>Monitoramento de falhas, alertas e observabilidade completa.</p>
-</div>
+    <div class="post">
+      <h3>Por que eu amo romances?</h3>
+      <small>Postado em 2026</small>
+      <p>Os romances me fazem sentir, sonhar e viver histórias que talvez nunca viveria. Cada livro é uma experiência única.</p>
+    </div>
 
-</div>
+    <div class="post">
+      <h3>Meu top 3 livros do mês</h3>
+      <small>Postado em 2026</small>
+      <p>Esse mês foi cheio de leituras incríveis, mas alguns livros se destacaram e marcaram meu coração.</p>
+    </div>
 
+    <div class="post">
+      <h3>Leitura como refúgio</h3>
+      <small>Postado em 2026</small>
+      <p>Ler é meu escape do mundo real. Um momento só meu, onde posso relaxar e me reconectar.</p>
+    </div>
+
+  </div>
 </section>
 
 <footer>
-
-<p>© 2026 DevOps Monitoring Environment</p>
-
+  <p>© 2026 ana.logialiteraria 💕</p>
 </footer>
-
-<script>
-
-function scrollToSection(){
-document.getElementById("features").scrollIntoView({
-behavior:"smooth"
-});
-}
-
-</script>
 
 </body>
 </html>

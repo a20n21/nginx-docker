@@ -16,7 +16,7 @@ services:
   nginx-exporter:
     image: nginx/nginx-prometheus-exporter:latest
     container_name: nginx-exporter
-    command: --nginx.scrape-uri=http://nginx:80/metrics
+    command:  "-nginx.scrape-uri http://nginx:80/nginx_status"
     ports:
       - "9113:9113"
     restart: unless-stopped
